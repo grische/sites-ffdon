@@ -1,4 +1,6 @@
-Site-Konfiguration nach dem Vorbild von Freifunk Münster
+Site-Konfiguration nach dem Vorbild von Freifunk Münster.
+
+Die einzelnen Domaenen werden in Branches konfiguriert.
 
 Gegenüber deren Vorlage
 
@@ -11,4 +13,4 @@ ist das Build-Script in ein eigenes Repo
 ausgelagert.
 
 
-Die Domaene-03 ist für Donauwörth und Umgebung
+Die Domaene-03 ist derzeit master und für Donauwörth und Umgebung.
