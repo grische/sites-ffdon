@@ -1,6 +1,5 @@
-sites-ffdon
-
 Site-Konfiguration nach dem Vorbild von Freifunk Münster
+
 Gegenüber deren Vorlage
 
    https://github.com/FreiFunkMuenster/site-ffms.git
