@@ -1,4 +1,4 @@
-Site-Konfiguration nach dem Vorbild von Freifunk Münster.
+Site-Konfiguration nach dem Vorbild von Freifunk Münsterland.
 
 Die einzelnen Domaenen werden in Branches konfiguriert.
 
@@ -11,6 +11,3 @@ ist das Build-Script in ein eigenes Repo
    https://github.com/ffdon/sitebuilder_ffdon.git
 
 ausgelagert.
-
-
-Die Domaene-03 ist derzeit master und für Donauwörth und Umgebung.
