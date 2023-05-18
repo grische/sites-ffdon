@@ -1,0 +1,40 @@
+From 41ad815438b306e21c6b1a0a6a246a31886ece96 Mon Sep 17 00:00:00 2001
+From: Grische <2787581+grische@users.noreply.github.com>
+Date: Thu, 18 May 2023 14:13:30 +0200
+Subject: [PATCH] ath10k: fix board-2.bin URL
+
+---
+ .../0025-ath10k-fix-board-2.bin-URL.patch     | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+ create mode 100644 patches/openwrt/0025-ath10k-fix-board-2.bin-URL.patch
+
+diff --git a/patches/openwrt/0025-ath10k-fix-board-2.bin-URL.patch b/patches/openwrt/0025-ath10k-fix-board-2.bin-URL.patch
+new file mode 100644
+index 0000000..e2f847c
+--- /dev/null
++++ b/patches/openwrt/0025-ath10k-fix-board-2.bin-URL.patch
+@@ -0,0 +1,21 @@
++From: Grische <2787581+grische@users.noreply.github.com>
++Date: Thu, 18 May 2023 14:09:31 +0200
++Subject: ath10k: fix board-2.bin URL
++
++Repos moved from sources.codeaurora.org to git.codelinaro.org
++
++diff --git a/package/firmware/ath10k-firmware/Makefile b/package/firmware/ath10k-firmware/Makefile
++index 6e6670b87f64c9254db11dcf26c0492d85d313f8..bea4c236575151d5d0e5120ce3731c96bfb6817f 100644
++--- a/package/firmware/ath10k-firmware/Makefile
+++++ b/package/firmware/ath10k-firmware/Makefile
++@@ -386,8 +386,8 @@ QCA99X0_BOARD_REV:=ddcec9efd245da9365c474f513a855a55f3ac7fe
++ QCA99X0_BOARD_FILE:=board-2.bin.$(QCA99X0_BOARD_REV)
++ 
++ define Download/qca99x0-board
++-  URL:=https://source.codeaurora.org/quic/qsdk/oss/firmware/ath10k-firmware/plain/ath10k/QCA99X0/hw2.0
++-  URL_FILE:=board-2.bin?id=$(QCA99X0_BOARD_REV)
+++  URL:=https://git.codelinaro.org/clo/qsdk/oss/firmware/ath10k-firmware/-/raw/$(QCA99X0_BOARD_REV)/ath10k/QCA99X0/hw2.0/
+++  URL_FILE:=board-2.bin
++   FILE:=$(QCA99X0_BOARD_FILE)
++   HASH:=03711ac21e60ef59d3815e235eb721c0c22851b5410299411085aa6f2af45401
++ endef
+-- 
+2.34.1
+
