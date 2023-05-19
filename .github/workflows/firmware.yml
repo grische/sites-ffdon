@@ -48,14 +48,15 @@ jobs:
           # Build images
           ./scripts/build.sh ${{ matrix.target }} ${{ matrix.domain }} ${{ env.gluon_ref }}
 
-          # Print Debug
-          find ./builddir/workdir/targets/${{ matrix.target }}/gluon/openwrt/bin/targets/ || true
+      - name: print output files
+        run: |
+          ls -AlR output/ || true
 
       - name: Upload firmware ${{ matrix.target }}
         uses: actions/upload-artifact@master
         with:
-          name: ${{ matrix.target }}_Domain${{ matrix.domain }}_output
-          path: ./builddir/workdir/targets/${{ matrix.target }}/gluon/openwrt/bin/targets/
+          name: ${{ matrix.target }}_domaene${{ matrix.domain }}_output
+          path: ./output/domaene${{ matrix.domain }}/
 
   create_release:
     runs-on: ubuntu-latest

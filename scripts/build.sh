@@ -45,8 +45,11 @@ if [ -d "patches" ]; then
 fi
 
 pushd "${gluon_build_dir}"
-make update GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLUON_BRANCH=stable GLUON_IMAGEDIR="${builddir}/output/${domain}/versions/v${version}" -j1 V=99
+make update GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLUON_BRANCH=stable -j1 V=99
 # nproc only returns a number, it is safe to disable it here
 # shellcheck disable=SC2086
-make        GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLUON_BRANCH=stable GLUON_IMAGEDIR="${builddir}/output/${domain}/versions/v${version}" -j${jobs} V=99
+make        GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLUON_BRANCH=stable -j${jobs} V=99
 popd
+
+mkdir -p "output/domaene${domain}/"
+mv -f "${gluon_build_dir}/output"/* "output/domaene${domain}/"
