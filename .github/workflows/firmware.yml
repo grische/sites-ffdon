@@ -46,33 +46,8 @@ jobs:
       - name: build target ${{ matrix.target }}
         id: compile
         run: |
-          # Turn "v2018.2.3_v1.0.08-1-g78bbb5d" into "1.0.08-1-g78bbb5d"
-          version=$(git describe --tags | cut -f2 -d"_" | tr -d 'v')
-
-          mkdir -p builddir/workdir/targets/${{ matrix.target }}
-
-          pushd builddir/workdir/targets/${{ matrix.target }}
-          if [ ! -d builddir/workdir/targets/${{ matrix.target }}/gluon ]; then
-            git clone --depth 1 --branch ${{ env.gluon_ref }} https://github.com/freifunk-gluon/gluon.git gluon
-          fi
-          popd
-
-          if [ ! -d builddir/workdir/targets/${{ matrix.target }}/gluon/site ]; then
-            git clone --depth 1 --branch Domaene-${{ matrix.domain }}_${{ env.ffdon_ref }} https://github.com/ffdon/sites-ffdon.git builddir/workdir/targets/${{ matrix.target }}/gluon/site;
-          fi
-
-          # Apply custom patches
-          for patch in patches/*; do
-            patch_path=$(realpath ${patch})
-            pushd builddir/workdir/targets/${{ matrix.target }}/gluon
-            patch -p1 < ${patch_path}
-            popd
-          done
-
-          pushd builddir/workdir/targets/${{ matrix.target }}/gluon
-          make update GLUON_RELEASE=${{ env.gluon_ref }}+${version} GLUON_TARGET=${{ matrix.target }} GLUON_BRANCH=stable GLUON_IMAGEDIR=builddir/workdir/output/${{ matrix.domain }}/versions/v${version} -j1 V=99
-          make        GLUON_RELEASE=${{ env.gluon_ref }}+${version} GLUON_TARGET=${{ matrix.target }} GLUON_BRANCH=stable GLUON_IMAGEDIR=builddir/workdir/output/${{ matrix.domain }}/versions/v${version} -j1 V=99
-          popd
+          # Build images
+          ./scripts/build.sh ${{ matrix.target }} ${{ matrix.domain }} ${{ env.gluon_ref }} ${{ env.ffdon_ref }}
 
           # Print Debug
           find ./builddir/workdir/targets/${{ matrix.target }}/gluon/openwrt/bin/targets/ || true
