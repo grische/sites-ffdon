@@ -16,7 +16,6 @@ on:
 
 env:
   gluon_ref: "v2018.2.4"
-  ffdon_ref: "v2018.2.3_v1.0.08"
 
 jobs:
   build_firmware:
@@ -47,7 +46,7 @@ jobs:
         id: compile
         run: |
           # Build images
-          ./scripts/build.sh ${{ matrix.target }} ${{ matrix.domain }} ${{ env.gluon_ref }} ${{ env.ffdon_ref }}
+          ./scripts/build.sh ${{ matrix.target }} ${{ matrix.domain }} ${{ env.gluon_ref }}
 
           # Print Debug
           find ./builddir/workdir/targets/${{ matrix.target }}/gluon/openwrt/bin/targets/ || true

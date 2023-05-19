@@ -7,7 +7,6 @@ builddir=${BUILDDIR:-"builddir/workdir"}
 target=${1}
 domain=${2}
 gluon_ref=${3:-"v2018.2.4"}
-ffdon_ref=${4:-"v2018.2.3_v1.0.08"}
 jobs=${JOBS:-$(nproc)}
 
 # Turn "v2018.2.3_v1.0.08-1-g78bbb5d" into "1.0.08-1-g78bbb5d"
@@ -22,9 +21,13 @@ if [ ! -d "${gluon_build_dir}" ]; then
 fi
 
 # Add site information
-if [ ! -d "${gluon_build_dir}/site" ]; then
-    git clone --depth 1 --branch Domaene-"${domain}_${ffdon_ref}" https://github.com/ffdon/sites-ffdon.git "${gluon_build_dir}/site";
+if [ -d "${gluon_build_dir}/site" ]; then
+    rm -rv "${gluon_build_dir}/site"
 fi
+mkdir -p "${gluon_build_dir}/site"
+cp -av domains/shared/* "${gluon_build_dir}/site/"
+cp -av "domains/${domain}/"* "${gluon_build_dir}/site/"
+
 
 if [ -d "patches" ]; then
     # Reset all previous patches
