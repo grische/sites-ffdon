@@ -1,0 +1,320 @@
+From 4c5d892c4dbf6381b5d72450ed39522c5b8e0839 Mon Sep 17 00:00:00 2001
+From: Grische <2787581+grische@users.noreply.github.com>
+Date: Thu, 18 May 2023 14:28:31 +0200
+Subject: [PATCH] use https:// instead of git:// in all packages
+
+---
+ ...https-instead-of-git-in-all-packages.patch |  30 ++++
+ ...https-instead-of-git-in-all-packages.patch | 160 ++++++++++++++++++
+ ...https-instead-of-git-in-all-packages.patch |  95 +++++++++++
+ 3 files changed, 285 insertions(+)
+ create mode 100644 patches/packages/gluon/0001-use-https-instead-of-git-in-all-packages.patch
+ create mode 100644 patches/packages/packages/0001-use-https-instead-of-git-in-all-packages.patch
+ create mode 100644 patches/packages/routing/0002-use-https-instead-of-git-in-all-packages.patch
+
+diff --git a/patches/packages/gluon/0001-use-https-instead-of-git-in-all-packages.patch b/patches/packages/gluon/0001-use-https-instead-of-git-in-all-packages.patch
+new file mode 100644
+index 0000000..f5b27ba
+--- /dev/null
++++ b/patches/packages/gluon/0001-use-https-instead-of-git-in-all-packages.patch
+@@ -0,0 +1,30 @@
++From: Grische <2787581+grische@users.noreply.github.com>
++Date: Thu, 18 May 2023 14:26:28 +0200
++Subject: use https:// instead of git:// in all packages
++
++diff --git a/net/batman-adv-legacy/Makefile b/net/batman-adv-legacy/Makefile
++index 3f27c51b0e613545d0481b9edde7651859af13e9..3aaacabf47348b788ef63787b7de4e275b10de3c 100644
++--- a/net/batman-adv-legacy/Makefile
+++++ b/net/batman-adv-legacy/Makefile
++@@ -17,7 +17,7 @@ BATCTL_VERSION:=2013.4.0
++ BATCTL_MD5SUM:=42e269cc710bbc9a8fd17628201d4258
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/freifunk-gluon/batman-adv-legacy.git
+++PKG_SOURCE_URL:=https://github.com/freifunk-gluon/batman-adv-legacy.git
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_VERSION:=7b775e93b7d2d3f10b137e76090c82a06af65272
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
++diff --git a/net/tunneldigger/Makefile b/net/tunneldigger/Makefile
++index 7cd30e192e35f3ea8d98ba1562f0f399aefe89fc..3c9293bd7586ea47126a2b5f3b965473813aa26a 100644
++--- a/net/tunneldigger/Makefile
+++++ b/net/tunneldigger/Makefile
++@@ -4,7 +4,7 @@ PKG_NAME:=tunneldigger
++ PKG_RELEASE:=1
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/wlanslovenija/tunneldigger.git
+++PKG_SOURCE_URL:=https://github.com/wlanslovenija/tunneldigger.git
++ PKG_SOURCE_DATE:=2019-04-01
++ PKG_SOURCE_VERSION:=7c467e68021526b8631e8a53a9022aa223b1991c
++ 
+diff --git a/patches/packages/packages/0001-use-https-instead-of-git-in-all-packages.patch b/patches/packages/packages/0001-use-https-instead-of-git-in-all-packages.patch
+new file mode 100644
+index 0000000..fa32caf
+--- /dev/null
++++ b/patches/packages/packages/0001-use-https-instead-of-git-in-all-packages.patch
+@@ -0,0 +1,160 @@
++From: Grische <2787581+grische@users.noreply.github.com>
++Date: Thu, 18 May 2023 14:20:26 +0200
++Subject: use https:// instead of git:// in all packages
++
++diff --git a/libs/libhttp-parser/Makefile b/libs/libhttp-parser/Makefile
++index 94cf8a1d16d339e5d3a98831a2cf09fbe9577ad0..f9fc7cdc09f0c7550079fae3ab26e2c37d0978ad 100644
++--- a/libs/libhttp-parser/Makefile
+++++ b/libs/libhttp-parser/Makefile
++@@ -17,7 +17,7 @@ PKG_LICENSE_FILES:=LICENSE-MIT
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
++ PKG_MIRROR_HASH:=83acea397da4cdb9192c27abbd53a9eb8e5a9e1bcea2873b499f7ccc0d68f518
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++-PKG_SOURCE_URL:=git://github.com/nodejs/http-parser.git
+++PKG_SOURCE_URL:=https://github.com/nodejs/http-parser.git
++ PKG_SOURCE_PROTO:=git
++ PKG_SOURCE_VERSION:=v$(PKG_VERSION)
++ 
++diff --git a/libs/protobuf-c/Makefile b/libs/protobuf-c/Makefile
++index 57ef5959fde3e47f94bd7ec5ed77d304f356fde8..d45cba83937f6f5b1362abd6d9bf00d74a7d5ad3 100644
++--- a/libs/protobuf-c/Makefile
+++++ b/libs/protobuf-c/Makefile
++@@ -14,7 +14,7 @@ PKG_RELEASE:=$(PKG_SOURCE_VERSION)
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
++ PKG_MIRROR_HASH:=2ebe48454fe454d118cf952655a24477c4bed892cee7ae085dc56d05ac711a8a
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++-PKG_SOURCE_URL:=git://github.com/protobuf-c/protobuf-c.git
+++PKG_SOURCE_URL:=https://github.com/protobuf-c/protobuf-c.git
++ PKG_SOURCE_PROTO:=git
++ PKG_SOURCE_VERSION:=$(PKG_VERSION)
++ 
++diff --git a/libs/yajl/Makefile b/libs/yajl/Makefile
++index 843b5967f2ad075095ffd61743b46b8016a06394..0ed3f1ce06edddaf2ca766ad1de3cb24e0f9f279 100644
++--- a/libs/yajl/Makefile
+++++ b/libs/yajl/Makefile
++@@ -19,7 +19,7 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
++ PKG_MIRROR_HASH:=95bfdb37f864318fc3c2ee736a747d4902d279a88f361770c89e60ff5e1d6f63
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_VERSION:=$(PKG_REV)
++-PKG_SOURCE_URL:=git://github.com/lloyd/yajl.git
+++PKG_SOURCE_URL:=https://github.com/lloyd/yajl.git
++ PKG_SOURCE_PROTO:=git
++ 
++ include $(INCLUDE_DIR)/package.mk
++diff --git a/net/coova-chilli/Makefile b/net/coova-chilli/Makefile
++index 2ec3c015b5012e326aa0c76b0eeb0252e4f8715e..f2a4e9d2b3a81b150b38677cf5f4a6e268d3a2d2 100644
++--- a/net/coova-chilli/Makefile
+++++ b/net/coova-chilli/Makefile
++@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=COPYING
++ PKG_RELEASE:=6
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/coova/coova-chilli
+++PKG_SOURCE_URL:=https://github.com/coova/coova-chilli
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_VERSION:=b93de20a288c01c2ba28e96e31ad6da01627f45f
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
++diff --git a/net/lispmob/Makefile b/net/lispmob/Makefile
++index 6783ea621d3067d2895512881574875f873bfdd9..a709e4d257dd861ad76c7fdd35c0313c7b6fa751 100644
++--- a/net/lispmob/Makefile
+++++ b/net/lispmob/Makefile
++@@ -14,7 +14,7 @@ PKG_RELEASE:=2
++ 
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
++ PKG_MIRROR_HASH:=584300e1a59cc976f3599213487ea8425f94300887a51c9804f0292cf2f0c8cc
++-PKG_SOURCE_URL:=git://github.com/LISPmob/lispmob.git
+++PKG_SOURCE_URL:=https://github.com/LISPmob/lispmob.git
++ PKG_SOURCE_PROTO:=git
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_VERSION:=$(PKG_REV)
++diff --git a/net/port-mirroring/Makefile b/net/port-mirroring/Makefile
++index 4882b4feaa044a4650eb02031191fe7d8b2c8113..17fefac4a8e0337b7fe17bbd5bffd5f9884dee0c 100644
++--- a/net/port-mirroring/Makefile
+++++ b/net/port-mirroring/Makefile
++@@ -15,7 +15,7 @@ PKG_LICENSE_FILES:=LICENSE
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
++ PKG_MIRROR_HASH:=0bffa393e740711db3eb930fc2674843c56b0dc9db15ac1887fec8776401af2a
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++-PKG_SOURCE_URL:=git://github.com/mmaraya/port-mirroring.git
+++PKG_SOURCE_URL:=https://github.com/mmaraya/port-mirroring.git
++ PKG_SOURCE_PROTO:=git
++ PKG_SOURCE_VERSION:=f6ead68b7760fa86e8da73ac1e062349f243ac93
++ PKG_FIXUP:=autoreconf
++diff --git a/sound/shairplay/Makefile b/sound/shairplay/Makefile
++index 64d689c7e5aedd2d9b39c7d24b9d77c0667c6f1f..87f518a16b247df757e8fb017f8e5cf13aff16b2 100644
++--- a/sound/shairplay/Makefile
+++++ b/sound/shairplay/Makefile
++@@ -12,7 +12,7 @@ PKG_VERSION:=2016-01-01
++ PKG_RELEASE:=1
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/juhovh/shairplay.git
+++PKG_SOURCE_URL:=https://github.com/juhovh/shairplay.git
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_VERSION:=ce80e005908f41d0e6fde1c4a21e9cb8ee54007b
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
++diff --git a/sound/shairport-sync/Makefile b/sound/shairport-sync/Makefile
++index f30cd17fe8cfcc7f583220baf46f68db2d4d5ff3..fe616c4fe86502c71b318389369df6ab4b85ea08 100644
++--- a/sound/shairport-sync/Makefile
+++++ b/sound/shairport-sync/Makefile
++@@ -11,7 +11,7 @@ PKG_VERSION:=3.1.6
++ PKG_RELEASE:=1
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/mikebrady/shairport-sync.git
+++PKG_SOURCE_URL:=https://github.com/mikebrady/shairport-sync.git
++ PKG_SOURCE_VERSION:=$(PKG_VERSION)
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
++diff --git a/utils/ecdsautils/Makefile b/utils/ecdsautils/Makefile
++index 7f1c76f0301f56b0a88c1f6a1a0147397fde25c7..a154a2e73e9868510c1152c3daa110e563aa7669 100644
++--- a/utils/ecdsautils/Makefile
+++++ b/utils/ecdsautils/Makefile
++@@ -14,7 +14,7 @@ PKG_REV:=07538893fb6c2a9539678c45f9dbbf1e4f222b46
++ PKG_MAINTAINER:=Matthias Schiffer <mschiffer@universe-factory.net>
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.xz
++ PKG_MIRROR_HASH:=397395a471c0b5af1a173666ba21a5bedb4c3423a6e37c545c3627bed73dcb76
++-PKG_SOURCE_URL:=git://github.com/tcatm/$(PKG_NAME).git
+++PKG_SOURCE_URL:=https://github.com/tcatm/$(PKG_NAME).git
++ PKG_SOURCE_VERSION:=$(PKG_REV)
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_PROTO:=git
++diff --git a/utils/pps-tools/Makefile b/utils/pps-tools/Makefile
++index 418d74291c1ab7c76e8523bbd32d1bd1821e1207..1b0961b9dcb99a3f6a267e2c99d4f3c50fd96c25 100644
++--- a/utils/pps-tools/Makefile
+++++ b/utils/pps-tools/Makefile
++@@ -12,7 +12,7 @@ PKG_VERSION:=2014-08-01
++ PKG_RELEASE=$(PKG_SOURCE_VERSION)
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/ago/pps-tools
+++PKG_SOURCE_URL:=https://github.com/ago/pps-tools
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_VERSION:=0deb9c7e135e9380a6d09e9d2e938a146bb698c8
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
++diff --git a/utils/rtklib/Makefile b/utils/rtklib/Makefile
++index f179f266961470cfbce786e2547adfc321bb4672..7db801244c40bfc03c15ef85a47b8a349c5d5bed 100644
++--- a/utils/rtklib/Makefile
+++++ b/utils/rtklib/Makefile
++@@ -11,7 +11,7 @@ PKG_VERSION:=2.4.3_b24
++ PKG_RELEASE:=$(PKG_SOURCE_VERSION)
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/tomojitakasu/RTKLIB.git
+++PKG_SOURCE_URL:=https://github.com/tomojitakasu/RTKLIB.git
++ PKG_SOURCE_VERSION:=1cec90a9ffa424908ad1a4ca3d52f33f9b94d1f7
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
++ PKG_MIRROR_HASH:=edda6c29ba3d2f5401145a1497e88646fa0c13afc31ade7bdd982bd8e8081c6a
++diff --git a/utils/rtl_433/Makefile b/utils/rtl_433/Makefile
++index d0eae629fed27b752e64d6ca3a26b62ba942af0b..9b8e0bd529daf957175d04896e116c30b733746b 100644
++--- a/utils/rtl_433/Makefile
+++++ b/utils/rtl_433/Makefile
++@@ -11,7 +11,7 @@ PKG_VERSION:=6531ea4
++ PKG_RELEASE:=$(PKG_SOURCE_VERSION)
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/merbanan/rtl_433.git
+++PKG_SOURCE_URL:=https://github.com/merbanan/rtl_433.git
++ PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
++ PKG_SOURCE_VERSION:=6531ea48a7933ac8289724672059e54fd8aad8eb
++ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+diff --git a/patches/packages/routing/0002-use-https-instead-of-git-in-all-packages.patch b/patches/packages/routing/0002-use-https-instead-of-git-in-all-packages.patch
+new file mode 100644
+index 0000000..b901a60
+--- /dev/null
++++ b/patches/packages/routing/0002-use-https-instead-of-git-in-all-packages.patch
+@@ -0,0 +1,95 @@
++From: Grische <2787581+grische@users.noreply.github.com>
++Date: Thu, 18 May 2023 14:25:39 +0200
++Subject: use https:// instead of git:// in all packages
++
++diff --git a/README b/README
++index 72b7fcceeec8f3133c10d1c6cfb4938123d940ed..25dbfec47cc5acb83e584396e5497e89a9de43f8 100644
++--- a/README
+++++ b/README
++@@ -3,7 +3,7 @@ This is an OpenWrt package feed containing community maintained routing packages
++ To use these packages, add the following line to the feeds.conf
++ in the OpenWrt buildroot:
++ 
++-  src-git routing git://github.com/openwrt-routing/packages.git
+++  src-git routing https://github.com/openwrt-routing/packages.git
++   
++ Update the feed:
++ 
++diff --git a/bmx6/Makefile b/bmx6/Makefile
++index fd9608183276fb32c7142bd883721505d10791af..4c9539b61ca262bc21e701cae08b4561a0b880b5 100644
++--- a/bmx6/Makefile
+++++ b/bmx6/Makefile
++@@ -28,7 +28,7 @@ PKG_NAME:=bmx6
++ 
++ PKG_SOURCE_PROTO:=git
++ 
++-PKG_SOURCE_URL:=git://github.com/bmx-routing/bmx6.git
+++PKG_SOURCE_URL:=https://github.com/bmx-routing/bmx6.git
++ #PKG_SOURCE_URL:=file:///usr/src/bmx-routing/bmx6.git
++ 
++ PKG_REV:=0312168aaa384379ccbefd4b2d936fc698664d5b
++diff --git a/mcproxy/Makefile b/mcproxy/Makefile
++index 4b6cf4eaf4b6275c2d63d50d35ce2e8aa7500f31..ca709c812702954d28eed6f5a0b311037f0dd16f 100644
++--- a/mcproxy/Makefile
+++++ b/mcproxy/Makefile
++@@ -13,7 +13,7 @@ PKG_VERSION:=2017-08-24-$(PKG_SOURCE_VERSION)
++ PKG_RELEASE:=1
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/mcproxy/mcproxy.git
+++PKG_SOURCE_URL:=https://github.com/mcproxy/mcproxy.git
++ PKG_MAINTAINER:=Steven Barth <cyrus@openwrt.org>
++ PKG_LICENSE:=GPL-2.0+
++ 
++diff --git a/minimalist-pcproxy/Makefile b/minimalist-pcproxy/Makefile
++index 36faa8d802e40f1ddc0a64722fcc66c4104b0805..8b8cf24c7bd4935b99955818f082140d83553f5f 100644
++--- a/minimalist-pcproxy/Makefile
+++++ b/minimalist-pcproxy/Makefile
++@@ -12,7 +12,7 @@ PKG_VERSION:=2015-01-12-$(PKG_SOURCE_VERSION)
++ PKG_RELEASE:=1
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/fingon/minimalist-pcproxy.git
+++PKG_SOURCE_URL:=https://github.com/fingon/minimalist-pcproxy.git
++ PKG_MAINTAINER:=Markus Stenberg <fingon@iki.fi>
++ PKG_LICENSE:=GPL-2.0
++ 
++diff --git a/mrd6/Makefile b/mrd6/Makefile
++index c4863ed4644c4f3d52eb38e5b58211ec257f3326..8cdd8d15be3b2db25edcf53c6a9f6e81439ba019 100644
++--- a/mrd6/Makefile
+++++ b/mrd6/Makefile
++@@ -13,7 +13,7 @@ PKG_VERSION:=2013-11-30-$(PKG_SOURCE_VERSION)
++ PKG_RELEASE:=2
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/hugosantos/mrd6.git
+++PKG_SOURCE_URL:=https://github.com/hugosantos/mrd6.git
++ PKG_MAINTAINER:=Steven Barth <cyrus@openwrt.org>
++ PKG_LICENSE:=GPL-2.0+
++ 
++diff --git a/ndppd/Makefile b/ndppd/Makefile
++index 9a3d55ea4a6c4b01a2bd2baac634e232e49d738a..ad3b0b07ed0e1698a44e0f72af913ded37aa6f06 100644
++--- a/ndppd/Makefile
+++++ b/ndppd/Makefile
++@@ -19,7 +19,7 @@ PKG_MD5SUM:=1391c063db64b47541e58da12e5ae60d
++ PKG_LICENSE:=GPL-3.0+
++ 
++ # Development snapshot
++-#PKG_SOURCE_URL=git://github.com/Tuhox/ndppd.git
+++#PKG_SOURCE_URL=https://github.com/Tuhox/ndppd.git
++ #PKG_SOURCE_VERSION=master
++ #PKG_SOURCE_SUBDIR=$(PKG_NAME)-$(PKG_VERSION)
++ 
++diff --git a/ohybridproxy/Makefile b/ohybridproxy/Makefile
++index 7d88f5d862ec619a8f9fccc01d361c496310a3bb..ea23137f311122cc6525aa2870010bbb11cff8b5 100644
++--- a/ohybridproxy/Makefile
+++++ b/ohybridproxy/Makefile
++@@ -12,7 +12,7 @@ PKG_VERSION:=2016-06-28-$(PKG_SOURCE_VERSION)
++ PKG_RELEASE:=1
++ 
++ PKG_SOURCE_PROTO:=git
++-PKG_SOURCE_URL:=git://github.com/sbyx/ohybridproxy.git
+++PKG_SOURCE_URL:=https://github.com/sbyx/ohybridproxy.git
++ PKG_MAINTAINER:=Steven Barth <cyrus@openwrt.org>
++ PKG_LICENSE:=GPL-2.0
++ 
+-- 
+2.34.1
+
