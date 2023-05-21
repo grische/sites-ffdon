@@ -49,6 +49,11 @@ make update GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLU
 # nproc only returns a number, it is safe to disable it here
 # shellcheck disable=SC2086
 make        GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLUON_BRANCH=stable -j${jobs} V=99
+
+# Create manifests
+for branch in experimental beta stable; do
+    make manifest GLUON_RELEASE="${gluon_ref}+${version}" GLUON_BRANCH=${branch} GLUON_AUTOUPDATER_BRANCH=${branch}
+done
 popd
 
 mkdir -p "output/domaene${domain}/"
