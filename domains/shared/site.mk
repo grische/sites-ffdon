@@ -1,4 +1,4 @@
-##	gluon site.mk makefile 
+##	gluon site.mk makefile
 
 ##	GLUON_FEATURES
 #		Specify Gluon features/packages to enable;
@@ -33,6 +33,7 @@ GLUON_SITE_PACKAGES := \
 	haveged \
 	iwinfo \
 	iptables \
+	ffho-autoupdater-wifi-fallback \
 	gluon-alfred
 #GLUON_SITE_PACKAGES := \
 #        gluon-config-mode-autoupdater \
@@ -47,7 +48,7 @@ GLUON_SITE_PACKAGES := \
 #	gluon-web-wifi-config \
 #	gluon-setup-mode \
 #	gluon-mesh-vpn-core \
-	
+
 GLUON_PRIORITY ?= 3
 GLUON_LANGS ?= de
 GLUON_ATH10K_MESH := ibss
