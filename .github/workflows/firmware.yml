@@ -65,6 +65,11 @@ jobs:
     # Only build for tags starting with a "v"
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
+      - name: Maximize build space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
       - name: Download all artifacts
         uses: actions/download-artifact@v3
       - name: Display structure of artifacts
@@ -73,7 +78,10 @@ jobs:
         run: |
           set -x
           for output in *_output; do
-            tar zcvf "${output}.tar.gz" "${output}"
+            tar zcf "${output}.tar.gz" "${output}"
+            ls -al "${output}.tar.gz" || true
+            du -sm "${output}" || true
+            rm -r "${output}" # Clean up artifacts to save space
           done
       - name: Create Release & Upload Release Assets
         uses: softprops/action-gh-release@v1
