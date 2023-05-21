@@ -64,12 +64,18 @@ jobs:
       - build_firmware
     # Only build for tags starting with a "v"
     if: startsWith(github.ref, 'refs/tags/v')
+    strategy:
+      fail-fast: false
+      matrix:
+        domain: [ "01", "03", "05", "07", "09", "11", "13", "15", "17", "19" ]
+
     steps:
       - name: Maximize build space
         run: |
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /usr/local/lib/android
           sudo rm -rf /opt/ghc
+        #TODO: do not download all artifacts
       - name: Download all artifacts
         uses: actions/download-artifact@v3
       - name: Display structure of artifacts
@@ -77,12 +83,22 @@ jobs:
       - name: Create tar.gz files
         run: |
           set -x
-          for output in *_output; do
+          for output in *_domaene${{ matrix.domain }}_output; do
             tar zcf "${output}.tar.gz" "${output}"
             ls -al "${output}.tar.gz" || true
             du -sm "${output}" || true
             rm -r "${output}" # Clean up artifacts to save space
           done
+      - name: Create tag
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/ffdon_domaene${{ matrix.domain }}/${{ github.ref_name }}',
+              sha: context.sha
+            })
       - name: Create Release & Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
@@ -90,8 +106,9 @@ jobs:
           # the GitHub UI do not trigger a failure and are modified instead.
           draft: false
           prerelease: false
+          tag_name: 'refs/tags/ffdon_domaene${{ matrix.domain }}/${{ github.ref_name }}'
           # Note: Release notes are only auto-generated if the release was
           # created by the Github Action and was not created in the Github UI.
           generate_release_notes: true
           files: |
-            ./*_output.tar.gz
+            ./*_domaene${{ matrix.domain }}_output.tar.gz
