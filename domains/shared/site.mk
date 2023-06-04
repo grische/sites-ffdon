@@ -35,19 +35,6 @@ GLUON_SITE_PACKAGES := \
 	iptables \
 	ffho-autoupdater-wifi-fallback \
 	gluon-alfred
-#GLUON_SITE_PACKAGES := \
-#        gluon-config-mode-autoupdater \
-#	gluon-config-mode-contact-info \
-#	gluon-config-mode-core \
-#	gluon-config-mode-geo-location \
-#	gluon-config-mode-hostname \
-#	gluon-web-admin \
-#	gluon-web-autoupdater \
-#	gluon-web-network \
-#	gluon-web-private-wifi \
-#	gluon-web-wifi-config \
-#	gluon-setup-mode \
-#	gluon-mesh-vpn-core \
 
 GLUON_PRIORITY ?= 3
 GLUON_LANGS ?= de
