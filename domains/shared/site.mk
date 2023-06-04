@@ -9,6 +9,7 @@ GLUON_FEATURES := \
 	advancedstats \
 	autoupdater \
 	config-mode-statistics \
+	config-mode-domain-select \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	ebtables-limit-arp \
@@ -25,6 +26,10 @@ GLUON_FEATURES := \
 	web-private-wifi \
 	web-wizard
 
+##	GLUON_MULTIDOMAIN
+#		Build gluon with multidomain support.
+
+GLUON_MULTIDOMAIN=1
 
 ##	GLUON_SITE_PACKAGES
 #		Specify additional Gluon/OpenWrt packages to include here;
