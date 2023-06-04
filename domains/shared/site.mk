@@ -6,7 +6,9 @@
 #		depending on the combination of features listed
 
 GLUON_FEATURES := \
+	advancedstats \
 	autoupdater \
+	config-mode-statistics \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	ebtables-limit-arp \
@@ -15,26 +17,26 @@ GLUON_FEATURES := \
 	mesh-vpn-tunneldigger \
 	radvd \
 	respondd \
-	status-page \
-	web-advanced \
-	web-wizard \
-        web-private-wifi \
-	advancedstats \
-        config-mode-statistics \
+	rfkill-disable \
 	ssid-changer \
+	status-page \
 	tunneldigger-watchdog \
-        rfkill-disable
+	web-advanced \
+	web-private-wifi \
+	web-wizard
+
+
 ##	GLUON_SITE_PACKAGES
 #		Specify additional Gluon/OpenWrt packages to include here;
 #		A minus sign may be prepended to remove a packages from the
 #		selection that would be enabled by default or due to the
 #		chosen feature flags
 GLUON_SITE_PACKAGES := \
-	haveged \
-	iwinfo \
-	iptables \
 	ffho-autoupdater-wifi-fallback \
-	gluon-alfred
+	gluon-alfred \
+	haveged \
+	iptables \
+	iwinfo
 
 GLUON_PRIORITY ?= 3
 GLUON_LANGS ?= de
