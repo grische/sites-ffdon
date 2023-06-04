@@ -27,6 +27,8 @@ fi
 mkdir -p "${gluon_build_dir}/site"
 cp -av domains/shared/* "${gluon_build_dir}/site/"
 cp -av "domains/${domain}/"* "${gluon_build_dir}/site/"
+mkdir -p "${gluon_build_dir}/site/domains"
+cp -av domains/*.conf "${gluon_build_dir}/site/domains/"
 
 
 if [ -d "patches" ]; then
