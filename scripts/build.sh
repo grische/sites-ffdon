@@ -5,8 +5,7 @@ set -eEux
 builddir=${BUILDDIR:-"builddir/workdir"}
 
 target=${1}
-domain=${2}
-gluon_ref=${3:-"v2018.2.4"}
+gluon_ref=${2:-"v2018.2.4"}
 jobs=${JOBS:-$(nproc)}
 
 # Turn "v2018.2.3_v1.0.08-1-g78bbb5d" into "1.0.08-1-g78bbb5d"
@@ -21,15 +20,7 @@ if [ ! -d "${gluon_build_dir}" ]; then
 fi
 
 # Add site information
-if [ -d "${gluon_build_dir}/site" ]; then
-    rm -rv "${gluon_build_dir}/site"
-fi
-mkdir -p "${gluon_build_dir}/site"
-cp -av domains/shared/* "${gluon_build_dir}/site/"
-cp -av "domains/${domain}/"* "${gluon_build_dir}/site/"
-mkdir -p "${gluon_build_dir}/site/domains"
-cp -av domains/*.conf "${gluon_build_dir}/site/domains/"
-
+ln -sfT "${PWD}" "${gluon_build_dir}/site"
 
 if [ -d "patches" ]; then
     # Reset all previous patches
@@ -58,5 +49,5 @@ for branch in experimental beta stable; do
 done
 popd
 
-mkdir -p "output/domaene${domain}/"
-mv -f "${gluon_build_dir}/output"/* "output/domaene${domain}/"
+mkdir -p "output/"
+mv -f "${gluon_build_dir}/output"/* "output/"
