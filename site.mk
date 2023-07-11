@@ -1,5 +1,7 @@
 ##	gluon site.mk makefile
 
+GLUON_DEPRECATED := upgrade
+
 ##	GLUON_FEATURES
 #		Specify Gluon features/packages to enable;
 #		Gluon will automatically enable a set of packages
@@ -21,7 +23,6 @@ GLUON_FEATURES := \
 	rfkill-disable \
 	ssid-changer \
 	status-page \
-	tunneldigger-watchdog \
 	web-advanced \
 	web-private-wifi \
 	web-wizard
