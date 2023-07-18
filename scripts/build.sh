@@ -44,7 +44,7 @@ make update GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLU
 make        GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLUON_BRANCH=stable -j${jobs} V=99
 
 # Create manifests
-for branch in experimental beta stable; do
+for branch in experimental testing stable; do
     make manifest GLUON_RELEASE="${gluon_ref}+${version}" GLUON_BRANCH=${branch} GLUON_AUTOUPDATER_BRANCH=${branch}
 done
 popd
