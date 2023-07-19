@@ -1,5 +1,7 @@
 ##	gluon site.mk makefile
 
+GLUON_DEPRECATED := upgrade
+
 ##	GLUON_FEATURES
 #		Specify Gluon features/packages to enable;
 #		Gluon will automatically enable a set of packages
@@ -16,12 +18,10 @@ GLUON_FEATURES := \
 	ebtables-source-filter \
 	mesh-batman-adv-15 \
 	mesh-vpn-tunneldigger \
-	radvd \
 	respondd \
 	rfkill-disable \
 	ssid-changer \
 	status-page \
-	tunneldigger-watchdog \
 	web-advanced \
 	web-private-wifi \
 	web-wizard
