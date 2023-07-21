@@ -39,7 +39,6 @@ GLUON_MULTIDOMAIN=1
 GLUON_SITE_PACKAGES := \
 	ffho-autoupdater-wifi-fallback \
 	gluon-alfred \
-	haveged \
 	iptables \
 	iwinfo
 
