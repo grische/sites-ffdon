@@ -5,7 +5,7 @@ set -eEux
 builddir=${BUILDDIR:-"builddir/workdir"}
 
 target=${1}
-gluon_ref=${2:-"v2019.1.3"}
+gluon_ref=${2:-"v2020.2.3"}
 jobs=${JOBS:-$(nproc)}
 
 # Turn "v2018.2.3_v1.0.08-1-g78bbb5d" into "1.0.08-1-g78bbb5d"
