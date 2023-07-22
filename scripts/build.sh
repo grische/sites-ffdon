@@ -16,7 +16,8 @@ mkdir -p "${builddir}/targets/${target}"
 # Clone Gluon
 gluon_build_dir="${builddir}/targets/${target}/gluon"
 if [ ! -d "${gluon_build_dir}" ]; then
-    git clone --depth 1 --branch "${gluon_ref}" https://github.com/freifunk-gluon/gluon.git "${gluon_build_dir}"
+    gluon_branch="${gluon_ref%.[0-9]}.x"
+    git clone --depth 1 --branch "${gluon_branch}" https://github.com/freifunk-gluon/gluon.git "${gluon_build_dir}"
 fi
 
 # Add site information
