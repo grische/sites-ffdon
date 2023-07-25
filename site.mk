@@ -8,9 +8,7 @@ GLUON_DEPRECATED := upgrade
 #		depending on the combination of features listed
 
 GLUON_FEATURES := \
-	advancedstats \
 	autoupdater \
-	config-mode-statistics \
 	config-mode-domain-select \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
