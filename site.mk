@@ -41,5 +41,7 @@ GLUON_SITE_PACKAGES := \
 	iwinfo
 
 GLUON_PRIORITY ?= 3
-GLUON_LANGS ?= de
 GLUON_REGION ?= eu
+
+# Languages to include
+GLUON_LANGS ?= en de
