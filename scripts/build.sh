@@ -39,6 +39,52 @@ if [ -d "patches" ]; then
 fi
 
 pushd "${gluon_build_dir}"
+
+# exclude building some devices to work around some flash size constraints
+if [ "${target}" = "ar71xx-tiny" ]; then
+    export GLUON_DEVICES="tp-link-tl-wr740n-nd-v1
+tp-link-tl-wr740n-nd-v3
+tp-link-tl-wr740n-nd-v4
+tp-link-tl-wr740n-nd-v5
+tp-link-tl-wr741n-nd-v1
+tp-link-tl-wr741n-nd-v2
+tp-link-tl-wr741n-nd-v4
+tp-link-tl-wr741n-nd-v5
+tp-link-tl-wr743n-nd-v1
+tp-link-tl-wr743n-nd-v2
+tp-link-tl-wa801n-nd-v1
+tp-link-tl-wa801n-nd-v2
+tp-link-tl-wa801n-nd-v3
+tp-link-tl-wr840n-v2
+tp-link-tl-wr841n-nd-v3
+tp-link-tl-wr841n-nd-v5
+tp-link-tl-wr841n-nd-v7
+tp-link-tl-wr841n-nd-v8
+tp-link-tl-wr841n-nd-v9
+tp-link-tl-wr841n-nd-v10
+tp-link-tl-wr841n-nd-v11
+tp-link-tl-wr841n-nd-v12
+tp-link-tl-wr843n-nd-v1
+tp-link-tl-wr941n-nd-v2
+tp-link-tl-wr941n-nd-v3
+tp-link-tl-wr941n-nd-v4
+tp-link-tl-wr941n-nd-v5
+tp-link-tl-wr941n-nd-v6
+tp-link-tl-wr940n-v4
+tp-link-tl-wr940n-v6
+tp-link-tl-wa730re-v1
+tp-link-tl-wa750re-v1
+tp-link-tl-wa830re-v1
+tp-link-tl-wa830re-v2
+tp-link-tl-wa850re-v1
+tp-link-tl-wa860re-v1
+tp-link-tl-wa901n-nd-v1
+tp-link-tl-wa901n-nd-v2
+tp-link-tl-wa901n-nd-v3
+tp-link-tl-wa901n-nd-v4
+tp-link-tl-wa901n-nd-v5"
+fi
+
 make update GLUON_RELEASE="${gluon_ref}+${version}" GLUON_TARGET="${target}" GLUON_BRANCH=stable -j1 V=99
 # nproc only returns a number, it is safe to disable it here
 # shellcheck disable=SC2086
