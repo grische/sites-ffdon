@@ -1,5 +1,8 @@
-GLUON_SITE_FEEDS='ffms'
+GLUON_SITE_FEEDS='ssidchanger ffms'
 
 PACKAGES_FFMS_REPO=https://github.com/freifunkMUC/packages-ffms.git
 PACKAGES_FFMS_COMMIT=c5fe8936983c9aaf9fed07e0a1c045761b7092b5
 PACKAGES_FFMS_BRANCH=v2019.1.x
+
+PACKAGES_SSIDCHANGER_REPO=https://github.com/Freifunk-Nord/gluon-ssid-changer.git
+PACKAGES_SSIDCHANGER_COMMIT=f266b9e6328f97354f3b8777d1111ad044be9be5
