@@ -20,6 +20,7 @@ GLUON_FEATURES := \
 	mesh-vpn-tunneldigger \
 	respondd \
 	rfkill-disable \
+	scheduled-domain-switch \
 	ssid-changer \
 	status-page \
 	web-advanced \
