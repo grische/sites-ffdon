@@ -37,6 +37,7 @@ GLUON_MULTIDOMAIN=1
 #		selection that would be enabled by default or due to the
 #		chosen feature flags
 GLUON_SITE_PACKAGES := \
+	ffac-scheduled-sysupgrade \
 	ffho-autoupdater-wifi-fallback \
 	gluon-alfred \
 	iptables \
