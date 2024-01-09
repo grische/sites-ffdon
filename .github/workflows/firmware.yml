@@ -52,7 +52,7 @@ jobs:
           ls -AlR output/ || true
 
       - name: Upload firmware ${{ matrix.target }}
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.target }}_output
           path: ./output/
